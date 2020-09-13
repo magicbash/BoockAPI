@@ -19,6 +19,7 @@ namespace BookApi.Controllers
         public IActionResult Test()
         {
             return new OkObjectResult("test");
+            return new OkObjectResult("test");
         }
     }
 }
