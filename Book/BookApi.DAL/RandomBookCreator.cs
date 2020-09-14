@@ -1,41 +1,48 @@
 ﻿using BookApi.Data.Entities;
 using System;
+using System.Collections.Generic;
 
 
 namespace BookApi.DAL
 {
     public class RandomBookCreator : IRandomBookCreator
     {
-        private static int _Id;
+        private static int _id;
+        private static Random _rnd = new Random();
 
         public Book CreateBook()
         {
 
             //todo 
             
-            Id = RandomBookCreator._Id++;
+            var id = _id++;
 
 
-            String[] RandomFirstNameArray = new String[] {"John", "Andrew", "Jack", "Captain", "Dober"};
-            String[] RandomSecondNameArray = new String[] {"Hoy", "Boyy", "Eren", "Crown", "Corman"};
+            var randomFirstNameArray = new[]{"John", "Andrew", "Jack", "Captain", "Dober"};
+            var randomSecondNameArray = new[]{"Hoy", "Boyy", "Eren", "Crown", "Corman"};
 
             
-            Random _rnd = new Random();
-
-            int RandomFirstName = _rnd.Next(0, RandomFirstNameArray.Length);
-            int RandomSecondName = _rnd.Next(0, RandomSecondNameArray.Length); //generate random authorname
+            var randomFirstName = _rnd.Next(0, randomFirstNameArray.Length);
+            var randomSecondName = _rnd.Next(0, randomSecondNameArray.Length); //generate random author name
 
 
-            String[] RandomBookNameArray = new String[] { "Anna Karenina", "Madame Bovary", "War and Peace", "The Great Gatsby", "Lolita", "Middlemarch", "The Adventures of Huckleberry Finn" };
-            int RandomBookName = _rnd.Next(0, RandomBookNameArray.Length); //generate random bookname
+            var randomBookNameArray = new [] { "Anna Karenina", "Madame Bovary", "War and Peace", "The Great Gatsby", "Lolita", "Middlemarch", "The Adventures of Huckleberry Finn" };
+            var randomBookName = _rnd.Next(0, randomBookNameArray.Length); //generate random book name
 
 
-            String[] RandomPublisherArray = new String[] { "McGraw-Hill Education", "Scholastic", "Springer Nature", "Grupo Planeta", "Hachette Livre", "Wolters Kluwer", "Bertelsmann" };
-            int RandomPublisherName = _rnd.Next(0, RandomPublisherArray.Length); //generate random publishername
+            var randomPublisherArray = new [] { "McGraw-Hill Education", "Scholastic", "Springer Nature", "Grupo Planeta", "Hachette Livre", "Wolters Kluwer", "Bertelsmann" };
+            var randomPublisherName = _rnd.Next(0, randomPublisherArray.Length); //generate random publishername
 
-            int[] RandomAgeLimitArray = new int[] { 0, 3, 12, 14, 16, 18, 21 };
-            int RandomAgeLimit = _rnd.Next(0, RandomAgeLimitArray.Length);
+            var randomAgeLimitArray = new [] { 0, 3, 12, 14, 16, 18, 21 };
+            var randomAgeLimit = _rnd.Next(0, randomAgeLimitArray.Length);
+            
+            
 
+            return new Book
+            {
+                Id = id,
+                Name = randomBookNameArray[randomBookName]
+            };
         }
     }
 }
